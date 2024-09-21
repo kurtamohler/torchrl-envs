@@ -89,3 +89,31 @@ blockheads balancing a ball by rotating. Click the play button again to stop.
 Now you can follow the ["Training the
 environment"](https://unity-technologies.github.io/ml-agents/Getting-Started/#training-the-environment)
 step from the `ml-agents` guide to easily start a new training session.
+
+## Control Unity environment from Python
+
+Open a Unity project that is set up for ML-Agents (like `3DBall`). Make sure the
+simulation is not running. Open a Python terminal and run:
+
+```python
+>>> import mlagents_envs.environment
+>>> env_unity = mlagents_envs.environment.UnityEnvironment()
+```
+
+NOTE: Not sure about this yet. Look at
+`ml-agents-envs/tests/test_pettingzoo_wrapper.py`.
+
+This last line will hang, waiting for you to click the play button in the Unity
+editor. Click the play button and then run:
+
+```python
+>>> import mlagents_envs.envs
+>>> env_aec = mlagents_envs.envs.unity_aec_env.UnityAECEnv(env_unity)
+```
+
+### (Not supported yet) Control Unity environment from TorchRL
+
+```
+>>> import torchrl
+>>> env = torchrl.envs.PettingZooWrapper(env_aec, use_mask=True)
+```
