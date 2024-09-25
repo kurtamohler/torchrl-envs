@@ -92,28 +92,20 @@ step from the `ml-agents` guide to easily start a new training session.
 
 ## Control Unity environment from Python
 
-Open a Unity project that is set up for ML-Agents (like `3DBall`). Make sure the
-simulation is not running. Open a Python terminal and run:
+Open a scene in the Unity editor that is set up for ML-Agents, like `3DBall` or
+any of the other scenes in the example project included in the ml-agents repo.
+Do not click the play button yet.
 
-```python
->>> import mlagents_envs.environment
->>> env_unity = mlagents_envs.environment.UnityEnvironment()
+Run the following script:
+
+```bash
+python test.py
 ```
 
-NOTE: Not sure about this yet. Look at
-`ml-agents-envs/tests/test_pettingzoo_wrapper.py`.
+Click the play button in the Unity editor when the script asks you to do so.
+This script simply steps the environment forward continuously, performing random
+actions at each step.
 
-This last line will hang, waiting for you to click the play button in the Unity
-editor. Click the play button and then run:
-
-```python
->>> import mlagents_envs.envs
->>> env_aec = mlagents_envs.envs.unity_aec_env.UnityAECEnv(env_unity)
-```
-
-### (Not supported yet) Control Unity environment from TorchRL
-
-```
->>> import torchrl
->>> env = torchrl.envs.PettingZooWrapper(env_aec, use_mask=True)
-```
+The [ML-Agents Python API
+docs](https://unity-technologies.github.io/ml-agents/Python-LLAPI/) describe how
+to interact with the environment from Python.
