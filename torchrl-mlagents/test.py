@@ -54,8 +54,12 @@ def print_steps(env):
 
             if idx == 0:
                 action_mask = step.action_mask
-                action_mask_shapes = [mask.shape for mask in action_mask]
-                print(f'      action_mask_shapes: {action_mask_shapes}')
+                if action_mask:
+                    action_mask_shapes = [mask.shape for mask in action_mask]
+                    print(f'      action_mask_shapes: {action_mask_shapes}')
+                else:
+                    print(f'      action_mask: {action_mask}')
+
 
 print_specs(env)
 print_steps(env)
